@@ -3,22 +3,202 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="GPT-6-Astra for Vision-and-Language Navigation. Project website coming soon.">
-  <title>GPT-6-Astra for VLN</title>
+  <meta name="theme-color" content="#15384f">
+  <title>GPT-6-Astra Lights Up Embodied Navigation</title>
+  <meta name="description" content="GPT-6-Astra achieves 81.3% success in zero-shot VLN-CE with monocular RGB and a minimal MCP interface. Explore navigation performance, behavior, reliability, and research implications.">
   <link rel="canonical" href="https://daiguangzhao.github.io/gpt-6-astra-for-vln/">
-  <style>
-    :root { color-scheme: light; }
-    * { box-sizing: border-box; }
-    body { margin: 0; min-height: 100vh; min-height: 100svh; display: grid; place-items: center; background: #fafaf8; color: #203650; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-    main { width: min(100%, 48rem); padding: 3rem 1.5rem; text-align: center; }
-    h1 { margin: 0 0 1rem; font-size: clamp(1.7rem, 5vw, 2.8rem); font-weight: 600; letter-spacing: -0.025em; }
-    p { margin: 0; color: #637083; font-size: 1rem; line-height: 1.6; }
-  </style>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="GPT-6-Astra Lights Up Embodied Navigation">
+  <meta property="og:description" content="One camera. A minimal interface. 81.3% success. Performance and behavioral analysis in zero-shot vision-and-language navigation.">
+  <meta property="og:url" content="https://daiguangzhao.github.io/gpt-6-astra-for-vln/">
+  <meta property="og:image" content="https://daiguangzhao.github.io/gpt-6-astra-for-vln/assets/performance.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <main>
-    <h1>GPT-6-Astra for VLN</h1>
-    <p>Project website coming soon.</p>
-  </main>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#overview" class="brand"><span class="brand-mark" aria-hidden="true">↗</span> GPT-6-Astra <span class="brand-context">/ VLN-CE</span></a>
+      <div class="header-links"><a href="https://arxiv.org/abs/2609.29861">arXiv <span aria-hidden="true">↗</span></a><a class="header-paper" href="assets/technical-report-v2.pdf">Latest PDF <span aria-hidden="true">↗</span></a></div>
+    </div>
+  </header>
+  <div class="page-layout">
+    <nav class="outline" aria-label="Page sections">
+      <p class="outline-label">In this report</p>
+      <a href="#overview" aria-current="location"><span>00</span> Overview</a>
+      <a href="#findings"><span>01</span> Four findings</a>
+      <a href="#interface"><span>02</span> Minimal interface</a>
+      <a href="#results"><span>03</span> Results</a>
+      <a href="#navigation"><span>04</span> Route adjustment</a>
+      <a href="#reliability"><span>05</span> Reliability</a>
+      <a href="#implications"><span>06</span> What's next</a>
+      <a href="#citation"><span>07</span> Citation</a>
+    </nav>
+    <main id="main">
+      <section class="hero" id="overview" aria-labelledby="project-title">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Technical report V2 <span class="eyebrow-sep">/</span> September 2026</p>
+        <h1 id="project-title"><span>GPT-6-Astra</span><br>Lights Up<br class="hero-break"> Embodied Navigation</h1>
+        <p class="subtitle">Evaluation in Zero-Shot Vision-and-Language<br class="wide-break"> Navigation in Continuous Environments</p>
+        <div class="authors"><span>Guangzhao Dai<sup>1</sup></span><span>Qianru Sun<sup>1</sup></span><span>Qi Wu<sup>2</sup></span><span>Bin Zhu<sup>1,†</sup></span></div>
+        <div class="affiliations"><p><sup>1</sup> School of Computing and Information Systems, Singapore Management University</p><p><sup>2</sup> Australia Institute for Machine Learning</p><p class="author-note"><sup>†</sup> Corresponding author and project lead</p></div>
+        <p class="hero-summary">How far can a general-purpose model navigate using its own perception, reasoning, and decisions? Give GPT-6-Astra a monocular camera and basic actions through MCP. It decides <strong>when to observe, how to move, and when to stop.</strong></p>
+        <div class="actions"><a class="button primary" href="assets/technical-report-v2.pdf">Read the latest report <span aria-hidden="true">↗</span></a><a class="button" href="https://arxiv.org/abs/2609.29861">arXiv: 2609.29861 <span aria-hidden="true">↗</span></a><a class="text-link" href="#citation">Cite this work <span aria-hidden="true">↓</span></a></div>
+        <p class="version-note">Website &amp; PDF updated 25 September 2026 · arXiv first release: 24 September 2026</p>
+        <div class="hero-metrics" aria-label="Main results with ultra reasoning">
+          <div><span class="metric-label">Success rate</span><strong>81.3<span>%</span></strong><p>Ultra reasoning · monocular RGB</p></div>
+          <div><span class="metric-label">Path efficiency · SPL</span><strong>71.5<span>%</span></strong><p>Success weighted by path length</p></div>
+          <div><span class="metric-label">Over zero-shot methods</span><strong>+15.3<span>pp</span></strong><p>SR vs. SpatialAnt (66.0%)</p></div>
+          <div><span class="metric-label">Over trained methods</span><strong>+9.2<span>pp</span></strong><p>SR vs. Qwen-RobotNav (72.1%)</p></div>
+        </div>
+        <p class="comparison-note">Comparisons use reported results with different evaluation subsets and system settings. They provide context for the model's performance; they are not a matched-condition ranking.</p>
+        <figure class="paper-figure performance-figure">
+          <a href="assets/performance.webp" data-lightbox aria-label="Enlarge Figure 1, navigation performance"><img src="assets/performance.webp" width="2600" height="805" alt="Two panels compare GPT-6-Astra with zero-shot and trained VLN methods. Medium and ultra reasoning achieve 75.7% and 81.3% success; ultra exceeds the strongest reported results by 15.3 and 9.2 percentage points." fetchpriority="high"><span class="zoom-hint" aria-hidden="true">↗ Expand figure</span></a>
+          <figcaption><span class="figure-number">Figure 1</span> Strong zero-shot navigation performance with monocular RGB. Trained-method results use the full validation-unseen split; GPT-6-Astra uses R2R-CE-100. <a href="#results">See scores and evaluation settings ↓</a></figcaption>
+        </figure>
+        <details class="abstract-block"><summary>Read the abstract <span aria-hidden="true">+</span></summary><div class="abstract-copy"><p>We investigate whether GPT-6-Astra, a general-purpose foundation model, can navigate unfamiliar environments using its own perception, reasoning, and decision-making capabilities. Our evaluation focuses on zero-shot vision-and-language navigation in continuous environments (VLN-CE) through a minimal interface in the Codex harness, aiming to unleash GPT-6-Astra&#x27;s full potential for navigation. Using monocular RGB, GPT-6-Astra decides when to observe, how to move, and when to stop, without navigation-specific fine-tuning, a trained waypoint predictor, or a pre-built scene map. Our evaluation yields four key findings and implications. First, GPT-6-Astra achieves strong zero-shot navigation performance using only monocular RGB observations. On R2R-CE-100, GPT-6-Astra (ultra reasoning) achieves a success rate of 81.3%, exceeding the strongest reported zero-shot and even train-based success rates by 15.3 and 9.2 percentage points, respectively. Second, GPT-6-Astra exhibits promising capabilities in interpreting multi-stage instructions, understanding the environment, and adjusting routes. Third, execution and goal-verification failures persist even with ultra reasoning. Fourth, these results motivate combining general-purpose model capabilities with navigation-specific expertise. Based on these findings, future VLN research should investigate which aspects of instruction interpretation, spatial understanding, and navigation decision-making general-purpose models can handle directly, and where navigation-specific learning can extend their capabilities. This includes exploring how spatial representations, navigation experience, and learned control skills can improve progress tracking, error recovery, and goal verification while preserving the flexibility to adjust routes.</p></div></details>
+      </section>
+
+      <section class="section" id="findings" aria-labelledby="findings-title">
+        <div class="section-heading"><p class="eyebrow">01 / Four findings</p><h2 id="findings-title">Strong performance.<br>A closer look at how it navigates.</h2><p>From task-level outcomes to the observations and actions behind them.</p></div>
+        <div class="findings-grid">
+          <article class="finding"><span class="finding-number">01</span><h3>Strong zero-shot navigation from monocular RGB.</h3><p>Success reaches <strong>75.7%</strong> with medium reasoning and <strong>81.3%</strong> with ultra reasoning, without navigation-specific fine-tuning, a trained waypoint predictor, or a pre-built scene map in our evaluation.</p><a href="#results">Explore the results <span aria-hidden="true">↗</span></a></article>
+          <article class="finding"><span class="finding-number">02</span><h3>Promising instruction interpretation, environment understanding, and route adjustment.</h3><p>Successful trajectories have median nDTW of <strong>90.3–91.0%</strong> across ultra runs. Recorded interactions show additional observations, returns to earlier locations, and changes in route or movement direction.</p><a href="#navigation">Follow a route adjustment <span aria-hidden="true">↗</span></a></article>
+          <article class="finding"><span class="finding-number">03</span><h3>Reliable execution and goal verification remain challenging.</h3><p><strong>8% of tasks</strong> fail in all six evaluations, while <strong>30%</strong> have mixed outcomes. Higher reasoning effort does not ensure reliable completion.</p><a href="#reliability">Inspect repeated failures <span aria-hidden="true">↗</span></a></article>
+          <article class="finding"><span class="finding-number">04</span><h3>Combine general-purpose capabilities with navigation expertise.</h3><p>Which capabilities can the model provide directly? Where can spatial representations, navigation experience, and learned control skills extend them while preserving flexible route adjustment?</p><a href="#implications">Read the research implications <span aria-hidden="true">↗</span></a></article>
+        </div>
+      </section>
+
+      <section class="section" id="interface" aria-labelledby="interface-title">
+        <div class="section-heading"><p class="eyebrow">02 / The evaluation interface</p><h2 id="interface-title">Minimal tools.<br>The model makes the decisions.</h2><p>A continuous Codex session connects GPT-6-Astra to the simulator through the Model Context Protocol (MCP).</p></div>
+        <div class="interface-layout">
+          <figure class="paper-figure interface-figure"><a href="assets/interface.webp" data-lightbox aria-label="Enlarge Figure 2, the minimal MCP navigation interface"><img src="assets/interface.webp" width="1625" height="1291" loading="lazy" alt="GPT-6-Astra uses observe() for monocular RGB observations and step(actions) to execute primitive actions through MCP."><span class="zoom-hint" aria-hidden="true">↗ Expand</span></a><figcaption><span class="figure-number">Figure 2</span> The minimal navigation interface.</figcaption></figure>
+          <div class="interface-copy">
+            <div class="tool-call"><span class="tool-index">01 / Look</span><h3><code>observe()</code></h3><p>Returns the current <strong>512 × 512 RGB view</strong>. The model chooses when another observation is useful.</p></div>
+            <div class="tool-call"><span class="tool-index">02 / Act</span><h3><code>step(actions)</code></h3><p>Executes an ordered sequence of basic actions and reports execution counts, remaining budget, and termination status.</p><div class="action-chips"><span>Forward 0.25 m</span><span>Turn left / right 15°</span><span>Tilt camera up / down 30°</span><span>STOP</span></div></div>
+            <p class="interface-note">A new RGB view requires another <code>observe()</code> call. Scene maps, reference paths, goal coordinates, global poses, and depth are unavailable through this interface.</p>
+          </div>
+        </div>
+        <div class="protocol-strip"><div><strong>100 tasks</strong><span>10 unseen scenes</span></div><div><strong>500 actions</strong><span>Per-episode budget</span></div><div><strong>2,400 seconds</strong><span>Per-episode time limit</span></div><div><strong>STOP within 3 m</strong><span>Required for success</span></div></div>
+      </section>
+
+      <section class="section" id="results" aria-labelledby="results-title">
+        <div class="section-heading"><p class="eyebrow">03 / Navigation performance</p><h2 id="results-title">81.3% success.<br>One monocular camera.</h2><p>Both reasoning settings use the same R2R-CE-100 tasks, task prompt, and navigation tools.</p></div>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="GPT-6-Astra navigation results">
+          <table class="results-table"><caption>GPT-6-Astra on R2R-CE-100</caption><thead><tr><th scope="col">Reasoning effort</th><th scope="col">NE ↓ <small>m</small></th><th scope="col">OSR ↑ <small>%</small></th><th scope="col">SR ↑ <small>%</small></th><th scope="col">SPL ↑ <small>%</small></th></tr></thead><tbody><tr class="medium-row"><th scope="row">Medium</th><td>3.0 ± 0.4</td><td>80.7 ± 2.1</td><td>75.7 ± 1.5</td><td>65.6 ± 2.1</td></tr>
+<tr class="ultra-row"><th scope="row">Ultra</th><td>2.9 ± 0.2</td><td>83.7 ± 1.5</td><td>81.3 ± 2.5</td><td>71.5 ± 1.7</td></tr></tbody></table>
+        </div>
+        <p class="table-note">Mean ± s.d. over three runs per reasoning setting. Text and figures use means unless stated otherwise. NE: final goal distance; OSR: entering the goal radius at any point; SR: successful completion; SPL: success weighted by path length.</p>
+        <details class="comparison-details"><summary>Explore all reported methods <span class="count-label">48 rows</span><span aria-hidden="true">+</span></summary>
+          <div class="comparison-tools"><div class="filter-buttons" role="group" aria-label="Filter methods"><button type="button" data-filter="all" aria-pressed="true">All</button><button type="button" data-filter="zero-shot" aria-pressed="false">Zero-shot</button><button type="button" data-filter="trained" aria-pressed="false">Trained</button></div><label class="search-label">Find a method <input type="search" id="method-search" placeholder="e.g. LaViRA" autocomplete="off"></label></div>
+          <p class="table-note" id="filter-status" role="status" aria-live="polite"></p>
+          <div class="table-scroll" tabindex="0" role="region" aria-label="Full comparison from report Table 1"><table id="comparison-table" class="comparison-table"><caption>Report Table 1 · reported navigation results</caption><thead><tr><th scope="col">Method</th><th scope="col">Setting</th><th scope="col">Split</th><th scope="col">View</th><th scope="col">NE ↓</th><th scope="col">OSR ↑</th><th scope="col">SR ↑</th><th scope="col">SPL ↑</th></tr></thead><tbody><tr data-group="trained"><th scope="row">ScaleVLN</th><td>Trained</td><td>Full</td><td>Pano.</td><td>4.8</td><td>—</td><td>55.0</td><td>51.0</td></tr>
+<tr data-group="trained"><th scope="row">ETPNav</th><td>Trained</td><td>Full</td><td>Pano.</td><td>4.7</td><td>65.0</td><td>57.0</td><td>49.0</td></tr>
+<tr data-group="trained"><th scope="row">BEVBert</th><td>Trained</td><td>Full</td><td>Pano.</td><td>4.6</td><td>67.0</td><td>59.0</td><td>50.0</td></tr>
+<tr data-group="trained"><th scope="row">HNR</th><td>Trained</td><td>Full</td><td>Pano.</td><td>4.4</td><td>67.0</td><td>61.0</td><td>51.0</td></tr>
+<tr data-group="trained"><th scope="row">Energy</th><td>Trained</td><td>Full</td><td>Pano.</td><td>4.7</td><td>65.0</td><td>58.0</td><td>50.0</td></tr>
+<tr data-group="trained"><th scope="row">g3D-LF</th><td>Trained</td><td>Full</td><td>Pano.</td><td>4.5</td><td>68.0</td><td>61.0</td><td>52.0</td></tr>
+<tr data-group="trained"><th scope="row">NavFoM</th><td>Trained</td><td>Full</td><td>Pano.</td><td>4.6</td><td>72.1</td><td>61.7</td><td>55.3</td></tr>
+<tr data-group="trained"><th scope="row">ABot-N0</th><td>Trained</td><td>Full</td><td>Pano.</td><td>3.8</td><td>70.8</td><td>66.4</td><td>63.9</td></tr>
+<tr data-group="trained"><th scope="row">OmniNav</th><td>Trained</td><td>Full</td><td>Pano.</td><td>3.7</td><td>74.6</td><td>69.5</td><td>66.1</td></tr>
+<tr data-group="trained"><th scope="row">Qwen-RobotNav-8B</th><td>Trained</td><td>Full</td><td>Pano.</td><td>3.5</td><td>78.5</td><td>72.1</td><td>66.6</td></tr>
+<tr data-group="trained"><th scope="row">AstraNav-World</th><td>Trained</td><td>Full</td><td>Pano.</td><td>3.9</td><td>73.9</td><td>67.9</td><td>65.4</td></tr>
+<tr data-group="trained"><th scope="row">NaVid</th><td>Trained</td><td>Full</td><td>Mono.</td><td>5.7</td><td>49.2</td><td>41.9</td><td>36.5</td></tr>
+<tr data-group="trained"><th scope="row">Uni-NaVid</th><td>Trained</td><td>Full</td><td>Mono.</td><td>5.6</td><td>53.3</td><td>47.0</td><td>42.7</td></tr>
+<tr data-group="trained"><th scope="row">NaVILA</th><td>Trained</td><td>Full</td><td>Mono.</td><td>5.2</td><td>62.5</td><td>54.0</td><td>49.0</td></tr>
+<tr data-group="trained"><th scope="row">Aux-Think</th><td>Trained</td><td>Full</td><td>Mono.</td><td>5.9</td><td>54.9</td><td>49.7</td><td>41.7</td></tr>
+<tr data-group="trained"><th scope="row">Dynam3D</th><td>Trained</td><td>Full</td><td>Mono.</td><td>5.3</td><td>62.1</td><td>52.9</td><td>45.7</td></tr>
+<tr data-group="trained"><th scope="row">StreamVLN</th><td>Trained</td><td>Full</td><td>Mono.</td><td>5.0</td><td>64.2</td><td>56.9</td><td>51.9</td></tr>
+<tr data-group="trained"><th scope="row">DualVLN</th><td>Trained</td><td>Full</td><td>Mono.</td><td>4.1</td><td>70.7</td><td>64.3</td><td>58.5</td></tr>
+<tr data-group="trained"><th scope="row">InternVLA-N1</th><td>Trained</td><td>Full</td><td>Mono.</td><td>4.8</td><td>63.3</td><td>58.2</td><td>54.0</td></tr>
+<tr data-group="trained"><th scope="row">D3D-VLP</th><td>Trained</td><td>Full</td><td>Mono.</td><td>4.7</td><td>67.2</td><td>61.3</td><td>56.1</td></tr>
+<tr data-group="trained"><th scope="row">Image2Nav</th><td>Trained</td><td>Full</td><td>Mono.</td><td>4.0</td><td>72.9</td><td>66.3</td><td>61.5</td></tr>
+<tr data-group="trained"><th scope="row">Qwen-RobotNav-8B</th><td>Trained</td><td>Full</td><td>Mono.</td><td>4.4</td><td>72.7</td><td>65.7</td><td>59.6</td></tr>
+<tr data-group="zero-shot"><th scope="row">NavGPT-CE-GPT4</th><td>Zero-shot</td><td>Full</td><td>Pano.</td><td>8.4</td><td>26.9</td><td>16.3</td><td>10.2</td></tr>
+<tr data-group="zero-shot"><th scope="row">HSGM</th><td>Zero-shot</td><td>Full</td><td>Pano.</td><td>5.4</td><td>58.7</td><td>47.9</td><td>32.8</td></tr>
+<tr data-group="zero-shot"><th scope="row">MapGPT-CE-GPT4o</th><td>Zero-shot</td><td>R2R-CE-100</td><td>Pano.</td><td>8.2</td><td>21.0</td><td>7.0</td><td>5.0</td></tr>
+<tr data-group="zero-shot"><th scope="row">DiscussNav-GPT4</th><td>Zero-shot</td><td>R2R-CE-100</td><td>Pano.</td><td>7.8</td><td>15.0</td><td>11.0</td><td>10.5</td></tr>
+<tr data-group="zero-shot"><th scope="row">Open-Nav-GPT4</th><td>Zero-shot</td><td>R2R-CE-100</td><td>Pano.</td><td>6.7</td><td>23.0</td><td>19.0</td><td>16.1</td></tr>
+<tr data-group="zero-shot"><th scope="row">Three-Step Nav-GPT-5</th><td>Zero-shot</td><td>R2R-CE-100</td><td>Pano.</td><td>5.9</td><td>39.0</td><td>34.0</td><td>29.1</td></tr>
+<tr data-group="zero-shot"><th scope="row">STRIDER-GPT-4o</th><td>Zero-shot</td><td>R2R-CE-100</td><td>Pano.</td><td>6.9</td><td>39.0</td><td>35.0</td><td>30.3</td></tr>
+<tr data-group="zero-shot"><th scope="row">LaViRA-GPT-4o</th><td>Zero-shot</td><td>R2R-CE-100</td><td>Pano.</td><td>6.4 ± 0.28</td><td>43.3 ± 3.2</td><td>36.0 ± 1.7</td><td>28.3 ± 0.8</td></tr>
+<tr data-group="zero-shot"><th scope="row">LaViRA-Gemini-2.5-pro</th><td>Zero-shot</td><td>R2R-CE-100</td><td>Pano.</td><td>6.5 ± 0.27</td><td>48.7 ± 2.1</td><td>38.3 ± 0.6</td><td>28.3 ± 0.9</td></tr>
+<tr data-group="zero-shot"><th scope="row">O2C-Nav-Gemini-2.5-Pro</th><td>Zero-shot</td><td>R2R-CE-100</td><td>Pano.</td><td>5.8</td><td>65.0</td><td>49.3</td><td>30.9</td></tr>
+<tr data-group="zero-shot"><th scope="row">EvoNav-GPT-4o</th><td>Zero-shot</td><td>R2R-CE-100</td><td>Pano.</td><td>6.0</td><td>35.0</td><td>30.0</td><td>24.9</td></tr>
+<tr data-group="zero-shot"><th scope="row">EvoNav-Gemini-2.5-pro</th><td>Zero-shot</td><td>R2R-CE-100</td><td>Pano.</td><td>5.0</td><td>51.0</td><td>43.0</td><td>37.8</td></tr>
+<tr data-group="zero-shot"><th scope="row">SmartWay-GPT-4o</th><td>Zero-shot</td><td>R2R-CE-100</td><td>Pano.</td><td>7.0</td><td>51.0</td><td>29.0</td><td>22.5</td></tr>
+<tr data-group="zero-shot"><th scope="row">SmartWay-GPT-5.5</th><td>Zero-shot</td><td>R2R-CE-100</td><td>Pano.</td><td>5.2</td><td>60.0</td><td>44.0</td><td>35.0</td></tr>
+<tr data-group="zero-shot"><th scope="row">AgenticNav-Gemini-2.5-pro</th><td>Zero-shot</td><td>R2R-CE-100</td><td>Pano.</td><td>5.9</td><td>63.0</td><td>49.0</td><td>33.2</td></tr>
+<tr data-group="zero-shot"><th scope="row">AgenticNav-GPT-5.5</th><td>Zero-shot</td><td>R2R-CE-100</td><td>Pano.</td><td>5.2</td><td>65.0</td><td>55.0</td><td>48.4</td></tr>
+<tr data-group="zero-shot"><th scope="row">SpatialNav</th><td>Zero-shot</td><td>Author-sampled</td><td>Pano.</td><td>5.2</td><td>66.0</td><td>64.0</td><td>51.1</td></tr>
+<tr data-group="zero-shot"><th scope="row">SpatialAnt</th><td>Zero-shot</td><td>Author-sampled</td><td>Pano.</td><td>4.4</td><td>76.0</td><td>66.0</td><td>54.4</td></tr>
+<tr data-group="zero-shot"><th scope="row">HarnessVLN-GPT-5.5</th><td>Zero-shot</td><td>—</td><td>Pano.</td><td>4.0</td><td>72.7</td><td>60.8</td><td>43.5</td></tr>
+<tr data-group="zero-shot"><th scope="row">Fast-SmartWay-GPT-4o</th><td>Zero-shot</td><td>R2R-CE-100</td><td>F3+P</td><td>7.7 ± 0.42</td><td>—</td><td>27.8 ± 2.22</td><td>25.0 ± 2.70</td></tr>
+<tr data-group="zero-shot"><th scope="row">CA-Nav</th><td>Zero-shot</td><td>Full</td><td>Mono.</td><td>7.6</td><td>48.0</td><td>25.3</td><td>10.8</td></tr>
+<tr data-group="zero-shot"><th scope="row">AO-Planner</th><td>Zero-shot</td><td>Full</td><td>Mono.</td><td>7.0</td><td>38.3</td><td>25.5</td><td>16.6</td></tr>
+<tr data-group="zero-shot"><th scope="row">DreamNav</th><td>Zero-shot</td><td>—</td><td>Mono.</td><td>7.1</td><td>41.0</td><td>32.8</td><td>29.0</td></tr>
+<tr data-group="zero-shot"><th scope="row">GC-VLN</th><td>Zero-shot</td><td>Full</td><td>Mono.</td><td>7.3</td><td>41.8</td><td>33.6</td><td>16.3</td></tr>
+<tr data-group="astra"><th scope="row">GPT-6-Astra (medium reasoning)</th><td>Zero-shot</td><td>R2R-CE-100</td><td>Mono.</td><td>3.0 ± 0.4</td><td>80.7 ± 2.1</td><td>75.7 ± 1.5</td><td>65.6 ± 2.1</td></tr>
+<tr data-group="astra"><th scope="row">GPT-6-Astra (ultra reasoning)</th><td>Zero-shot</td><td>R2R-CE-100</td><td>Mono.</td><td>2.9 ± 0.2</td><td>83.7 ± 1.5</td><td>81.3 ± 2.5</td><td>71.5 ± 1.7</td></tr></tbody></table></div>
+          <p id="no-results" hidden>No methods match this search.</p>
+          <p class="table-note">Full: complete validation-unseen split. Author-sampled: correspondence with Open-Nav's subset is unverified. Pano.: panoramic views; Mono.: monocular views; F3+P: three frontal views with initial or on-demand panoramas. LaViRA and Fast-SmartWay report mean ± s.d. over three and four runs. Missing or unverified values are shown as “—”. See <a href="assets/technical-report-v2.pdf#page=4">Table 1 in the report</a> for publications, score sources, and additional settings.</p>
+        </details>
+      </section>
+
+      <section class="section" id="navigation" aria-labelledby="navigation-title">
+        <div class="section-heading"><p class="eyebrow">04 / Instruction following &amp; route adjustment</p><h2 id="navigation-title">Follow the instruction.<br>Revisit. Adjust the route.</h2><p>Successful trajectories generally agree closely with reference paths. The model also takes additional views and returns to earlier places during navigation.</p></div>
+        <div class="evidence-highlight"><strong>90.3–91.0<span>%</span></strong><div><h3>Median nDTW among successful trajectories</h3><p>Range across the three ultra runs. nDTW measures agreement with the reference path; it does not score each individual instruction decision.</p></div></div>
+        <div class="case-study">
+          <div class="case-top"><p class="eyebrow">A successful route adjustment / EP42</p><span class="case-badge">Ultra · run 1</span></div>
+          <p class="case-instruction"><span>Instruction sequence</span> Kitchen <b aria-hidden="true">→</b> small living area <b aria-hidden="true">→</b> bedroom on the left</p>
+          <div class="case-layout">
+            <figure class="case-image"><img id="case-frame" src="assets/ep42-1.webp" width="512" height="512" loading="lazy" alt="EP42, primitive action 135: a bedroom with two beds."><figcaption><span id="case-frame-label">t = 135</span><span>Original RGB observation</span></figcaption></figure>
+            <div class="case-copy"><p class="eyebrow" id="case-counter">Observation 1 / 4</p><h3 id="case-title">Inspect a bedroom</h3><p id="case-description">After reaching a bedroom, the model checks whether the route matches the instructed sequence.</p><div class="next-action"><span>Next executed tool call</span><strong id="case-action">Turn left × 6, forward × 4</strong></div><div class="case-steps" role="group" aria-label="Choose a recorded observation"><button type="button" data-frame="0" aria-pressed="true" aria-label="Observation 1: inspect a bedroom">1</button><button type="button" data-frame="1" aria-pressed="false" aria-label="Observation 2: return to the kitchen">2</button><button type="button" data-frame="2" aria-pressed="false" aria-label="Observation 3: cross the living area">3</button><button type="button" data-frame="3" aria-pressed="false" aria-label="Observation 4: enter the bedroom">4</button></div><div class="case-controls"><button type="button" id="case-prev" disabled>← Previous</button><button type="button" id="case-next">Next observation →</button></div><p class="case-outcome"><strong>Success</strong> · NE 0.7 m · nDTW 27.5% · SPL 41.2%</p></div>
+          </div>
+          <p class="table-note">Selected observations from Figure 3; intermediate frames are omitted. <i>t</i> counts executed primitive actions. The return to the kitchen precedes successful completion, but the full trajectory includes a substantial detour.</p>
+          <noscript><p>All four observations and their action labels are available in <a href="assets/behavior.webp">Figure 3</a>.</p></noscript>
+        </div>
+        <details class="figure-details"><summary>View the route-following and adjustment analysis <span aria-hidden="true">+</span></summary><figure class="paper-figure"><a href="assets/behavior.webp" data-lightbox aria-label="Enlarge Figure 3, route following and navigation adjustments"><img src="assets/behavior.webp" width="2600" height="1931" loading="lazy" alt="Route following across 244 successful trajectories from three ultra runs, outcomes for 16, 16, and 12 trajectories with route or movement adjustments, and EP42 backtracking observations."></a><figcaption><span class="figure-number">Figure 3</span> The three ultra runs contain 16, 16, and 12 trajectories with observed route or movement adjustments, of which 10, 6, and 7 succeed. These counts do not isolate the effect of adjustment. Of all successful trajectories, 9.0 ± 1.0% have nDTW below 50%.</figcaption></figure></details>
+        <div class="instruction-analysis"><h3>Two forms of spatial selection</h3><p><strong>Order-based selection</strong> identifies a target among alternatives, such as the second room or rightmost doorway. <strong>Landmark-based selection</strong> identifies a target relative to a landmark, such as left of, between, or behind.</p><div class="table-scroll" tabindex="0" role="region" aria-label="Instruction subset results"><table class="subset-table"><caption>Ultra reasoning · navigation performance by instruction type</caption><thead><tr><th scope="col">Instruction subset</th><th scope="col">Tasks</th><th scope="col">SR (%)</th><th scope="col">SPL (%)</th><th scope="col">nDTW (%)</th></tr></thead><tbody><tr><th scope="row">Order-based selection</th><td>14</td><td>95.2 ± 8.2</td><td>77.3 ± 8.2</td><td>75.9 ± 3.2</td></tr><tr><th scope="row">Landmark-based selection</th><td>13</td><td>74.4 ± 11.8</td><td>69.0 ± 8.1</td><td>73.9 ± 2.0</td></tr></tbody></table></div><p class="table-note">Mean ± sample s.d. across three runs. Scores measure whole-task outcomes, not individual spatial decisions. Subsets may overlap and differ in scene layout and route difficulty.</p></div>
+      </section>
+
+      <section class="section" id="reliability" aria-labelledby="reliability-title">
+        <div class="section-heading"><p class="eyebrow">05 / Failure modes &amp; reliability</p><h2 id="reliability-title">More reasoning.<br>Persistent challenges.</h2><p>Repeat evaluations distinguish a difficult task from a single unsuccessful execution.</p></div>
+        <div class="consistency-grid"><div><strong>62<span>%</span></strong><h3>Always succeed</h3><p>Successful in all six evaluations.</p></div><div><strong>30<span>%</span></strong><h3>Mixed outcomes</h3><p>Success varies across evaluations.</p></div><div><strong>8<span>%</span></strong><h3>Always fail</h3><p>Unsuccessful in all six evaluations.</p></div></div>
+        <p class="table-note">100 distinct tasks, each evaluated three times with medium and three times with ultra reasoning.</p>
+        <figure class="paper-figure"><a href="assets/reliability.webp" data-lightbox aria-label="Enlarge Figure 4, repeated outcomes and failure cases"><img src="assets/reliability.webp" width="2600" height="2024" loading="lazy" alt="Three ultra runs have 79, 81, and 84 successes. A task consistency matrix shows 62 always succeeding and 8 always failing. EP176 shows identical views after eight forward actions; EP1133 fails across all six evaluations."><span class="zoom-hint" aria-hidden="true">↗ Expand figure</span></a><figcaption><span class="figure-number">Figure 4</span> Repeated evaluations distinguish persistent and variable failures. Selected cases show ineffective motion and an incorrect stopping location.</figcaption></figure>
+        <div class="failure-grid"><article><span class="small-label">Route following</span><h3>Plausible landmarks can lead to the wrong place.</h3><p>In one ultra run, EP513 ends 14.5 m from the goal despite a plausible fireplace and seating match. The same task succeeds in the other two ultra runs.</p></article><article><span class="small-label">Execution</span><h3>Repeated movement does not ensure progress.</h3><p>In EP176, eight forward actions produce identical RGB views. The episode later exhausts its action budget with 35.4 m navigation error.</p></article><article><span class="small-label">Goal verification</span><h3>Entering the goal area does not ensure a correct stop.</h3><p>Across the ultra runs, 1–3 failures per run previously enter the success radius. Final location must still be checked against the instruction and route.</p></article></div>
+      </section>
+
+      <section class="section implications-section" id="implications" aria-labelledby="implications-title">
+        <div class="section-heading"><p class="eyebrow">06 / Implications for embodied navigation</p><h2 id="implications-title">What can the model provide?<br>What should navigation research add?</h2><p>Prior VLN research supplies benchmarks and methods for visual grounding, memory, and action selection. The next question is how this expertise can extend general-purpose models.</p></div>
+        <p class="research-statement">Investigate which aspects of <strong>instruction interpretation, spatial understanding, and navigation decision-making</strong> general-purpose models can handle directly, and where navigation-specific learning can extend their capabilities.</p>
+        <div class="directions-grid"><article><span class="direction-number">01</span><h3>Spatial representations</h3><p>Relate current views to visited places and completed instruction steps. Preserve landmark relations and route history while allowing uncertain judgments to change.</p><span class="direction-goal">Progress tracking &amp; goal verification</span></article><article><span class="direction-number">02</span><h3>Navigation experience</h3><p>Connect observations and actions with their outcomes through trajectory learning or demonstrations. Test which experiences remain useful across tasks and layouts.</p><span class="direction-goal">Route choice &amp; error recovery</span></article><article><span class="direction-number">03</span><h3>Learned control skills</h3><p>Provide efficient movement and recovery routines that the model can select or revise. Use execution feedback to detect ineffective motion.</p><span class="direction-goal">Efficient movement &amp; reliable execution</span></article></div>
+        <div class="research-bottom"><strong>Preserve the flexibility to observe and adjust routes.</strong><p>These are directions for future work. Controlled comparisons should test each addition with the same model, tasks, observations, primitive actions, and budgets, while disclosing any added information.</p></div>
+      </section>
+
+      <section class="limitations-section" aria-labelledby="limits-title"><p class="eyebrow">Scope &amp; open questions</p><h2 id="limits-title">What remains to be established</h2><div class="limitations-grid"><p><strong>Broader transfer.</strong> Repeated runs establish repeatability on this fixed R2R-CE-100 set. Longer instructions, new environments, and other datasets remain to be evaluated.</p><p><strong>Practical deployment.</strong> High inference cost and latency are current constraints. They may diminish as models and inference systems improve.</p><p><strong>Training-data transparency.</strong> GPT-6-Astra is proprietary. Whether it was trained on navigation data, and how much, is unknown. Zero-shot here means no navigation-specific fine-tuning in our evaluation.</p></div></section>
+
+      <section class="section citation-section" id="citation" aria-labelledby="citation-title">
+        <div class="section-heading"><p class="eyebrow">07 / Citation</p><h2 id="citation-title">Cite this work</h2><p>The website and downloadable PDF reflect the latest V2 update. The arXiv link provides the public submission record.</p></div>
+        <div class="citation-box"><div class="citation-bar"><span>BibTeX</span><button type="button" id="copy-citation">Copy citation</button><span id="copy-status" class="sr-only" role="status"></span></div><pre><code id="bibtex">@misc{dai2026gpt6astra,
+  title = {GPT-6-Astra Lights Up Embodied Navigation:
+           Evaluation in Zero-Shot Vision-and-Language
+           Navigation in Continuous Environments},
+  author = {Guangzhao Dai and Qianru Sun and Qi Wu and Bin Zhu},
+  year = {2026},
+  eprint = {2609.29861},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.RO},
+  url = {https://arxiv.org/abs/2609.29861}
+}</code></pre></div>
+        <div class="related-work"><h3>Related work &amp; resources</h3><p>Our evaluation follows the harness-based setup of <a href="https://jianzhou0420.github.io/mip/">Embodied Agents Take Control</a>. See its <a href="https://github.com/jianzhou0420/MIP">MIP code repository</a> for the underlying setup. Our <a href="https://daiguangzhao.github.io/gpt-6-astra-vln/">earlier workflow study</a> is available separately.</p></div>
+      </section>
+      <footer><p>GPT-6-Astra for VLN <span>·</span> Technical report V2 <span>·</span> 2026</p><a href="#overview">Back to top ↑</a></footer>
+    </main>
+  </div>
+  <dialog id="figure-dialog" aria-label="Enlarged report figure"><div class="dialog-toolbar"><span>Report figure</span><button type="button" id="close-figure" autofocus>Close ×</button></div><div class="dialog-content"><img id="dialog-image" alt=""></div><p id="dialog-caption"></p></dialog>
 </body>
 </html>

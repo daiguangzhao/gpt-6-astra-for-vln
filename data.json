@@ -1,0 +1,558 @@
+{
+  "case": [
+    {
+      "src": "assets/ep42-1.webp",
+      "step": 135,
+      "title": "Inspect a bedroom",
+      "action": "Turn left \u00d7 6, forward \u00d7 4"
+    },
+    {
+      "src": "assets/ep42-2.webp",
+      "step": 207,
+      "title": "Return to the kitchen",
+      "action": "Turn right \u00d7 1, forward \u00d7 8"
+    },
+    {
+      "src": "assets/ep42-3.webp",
+      "step": 260,
+      "title": "Cross the living area",
+      "action": "Forward \u00d7 5"
+    },
+    {
+      "src": "assets/ep42-4.webp",
+      "step": 287,
+      "title": "Enter the bedroom",
+      "action": "STOP"
+    }
+  ],
+  "comparison": [
+    {
+      "method": "ScaleVLN",
+      "publication": "ICCV'2023",
+      "split": "Full",
+      "view": "Pano.",
+      "ne": "4.8",
+      "osr": "\u2014",
+      "sr": "55.0",
+      "spl": "51.0",
+      "group": "trained"
+    },
+    {
+      "method": "ETPNav",
+      "publication": "TPAMI'2025",
+      "split": "Full",
+      "view": "Pano.",
+      "ne": "4.7",
+      "osr": "65.0",
+      "sr": "57.0",
+      "spl": "49.0",
+      "group": "trained"
+    },
+    {
+      "method": "BEVBert",
+      "publication": "ICCV'2023",
+      "split": "Full",
+      "view": "Pano.",
+      "ne": "4.6",
+      "osr": "67.0",
+      "sr": "59.0",
+      "spl": "50.0",
+      "group": "trained"
+    },
+    {
+      "method": "HNR",
+      "publication": "CVPR'2024",
+      "split": "Full",
+      "view": "Pano.",
+      "ne": "4.4",
+      "osr": "67.0",
+      "sr": "61.0",
+      "spl": "51.0",
+      "group": "trained"
+    },
+    {
+      "method": "Energy",
+      "publication": "NeurIPS'2024",
+      "split": "Full",
+      "view": "Pano.",
+      "ne": "4.7",
+      "osr": "65.0",
+      "sr": "58.0",
+      "spl": "50.0",
+      "group": "trained"
+    },
+    {
+      "method": "g3D-LF",
+      "publication": "CVPR'2025",
+      "split": "Full",
+      "view": "Pano.",
+      "ne": "4.5",
+      "osr": "68.0",
+      "sr": "61.0",
+      "spl": "52.0",
+      "group": "trained"
+    },
+    {
+      "method": "NavFoM",
+      "publication": "ICLR'2026",
+      "split": "Full",
+      "view": "Pano.",
+      "ne": "4.6",
+      "osr": "72.1",
+      "sr": "61.7",
+      "spl": "55.3",
+      "group": "trained"
+    },
+    {
+      "method": "ABot-N0",
+      "publication": "arXiv'2026",
+      "split": "Full",
+      "view": "Pano.",
+      "ne": "3.8",
+      "osr": "70.8",
+      "sr": "66.4",
+      "spl": "63.9",
+      "group": "trained"
+    },
+    {
+      "method": "OmniNav",
+      "publication": "ICLR'2026",
+      "split": "Full",
+      "view": "Pano.",
+      "ne": "3.7",
+      "osr": "74.6",
+      "sr": "69.5",
+      "spl": "66.1",
+      "group": "trained"
+    },
+    {
+      "method": "Qwen-RobotNav-8B",
+      "publication": "arXiv'2026",
+      "split": "Full",
+      "view": "Pano.",
+      "ne": "3.5",
+      "osr": "78.5",
+      "sr": "72.1",
+      "spl": "66.6",
+      "group": "trained"
+    },
+    {
+      "method": "AstraNav-World",
+      "publication": "arXiv'2025",
+      "split": "Full",
+      "view": "Pano.",
+      "ne": "3.9",
+      "osr": "73.9",
+      "sr": "67.9",
+      "spl": "65.4",
+      "group": "trained"
+    },
+    {
+      "method": "NaVid",
+      "publication": "RSS'2024",
+      "split": "Full",
+      "view": "Mono.",
+      "ne": "5.7",
+      "osr": "49.2",
+      "sr": "41.9",
+      "spl": "36.5",
+      "group": "trained"
+    },
+    {
+      "method": "Uni-NaVid",
+      "publication": "RSS'2025",
+      "split": "Full",
+      "view": "Mono.",
+      "ne": "5.6",
+      "osr": "53.3",
+      "sr": "47.0",
+      "spl": "42.7",
+      "group": "trained"
+    },
+    {
+      "method": "NaVILA",
+      "publication": "RSS'2025",
+      "split": "Full",
+      "view": "Mono.",
+      "ne": "5.2",
+      "osr": "62.5",
+      "sr": "54.0",
+      "spl": "49.0",
+      "group": "trained"
+    },
+    {
+      "method": "Aux-Think",
+      "publication": "NeurIPS'2025",
+      "split": "Full",
+      "view": "Mono.",
+      "ne": "5.9",
+      "osr": "54.9",
+      "sr": "49.7",
+      "spl": "41.7",
+      "group": "trained"
+    },
+    {
+      "method": "Dynam3D",
+      "publication": "NeurIPS'2025",
+      "split": "Full",
+      "view": "Mono.",
+      "ne": "5.3",
+      "osr": "62.1",
+      "sr": "52.9",
+      "spl": "45.7",
+      "group": "trained"
+    },
+    {
+      "method": "StreamVLN",
+      "publication": "ICRA'2026",
+      "split": "Full",
+      "view": "Mono.",
+      "ne": "5.0",
+      "osr": "64.2",
+      "sr": "56.9",
+      "spl": "51.9",
+      "group": "trained"
+    },
+    {
+      "method": "DualVLN",
+      "publication": "arXiv'2025",
+      "split": "Full",
+      "view": "Mono.",
+      "ne": "4.1",
+      "osr": "70.7",
+      "sr": "64.3",
+      "spl": "58.5",
+      "group": "trained"
+    },
+    {
+      "method": "InternVLA-N1",
+      "publication": "Tech.Rep.'2025",
+      "split": "Full",
+      "view": "Mono.",
+      "ne": "4.8",
+      "osr": "63.3",
+      "sr": "58.2",
+      "spl": "54.0",
+      "group": "trained"
+    },
+    {
+      "method": "D3D-VLP",
+      "publication": "CVPR'2026",
+      "split": "Full",
+      "view": "Mono.",
+      "ne": "4.7",
+      "osr": "67.2",
+      "sr": "61.3",
+      "spl": "56.1",
+      "group": "trained"
+    },
+    {
+      "method": "Image2Nav",
+      "publication": "arXiv'2026",
+      "split": "Full",
+      "view": "Mono.",
+      "ne": "4.0",
+      "osr": "72.9",
+      "sr": "66.3",
+      "spl": "61.5",
+      "group": "trained"
+    },
+    {
+      "method": "Qwen-RobotNav-8B",
+      "publication": "arXiv'2026",
+      "split": "Full",
+      "view": "Mono.",
+      "ne": "4.4",
+      "osr": "72.7",
+      "sr": "65.7",
+      "spl": "59.6",
+      "group": "trained"
+    },
+    {
+      "method": "NavGPT-CE-GPT4",
+      "publication": "AAAI'2024",
+      "split": "Full",
+      "view": "Pano.",
+      "ne": "8.4",
+      "osr": "26.9",
+      "sr": "16.3",
+      "spl": "10.2",
+      "group": "zero-shot"
+    },
+    {
+      "method": "HSGM",
+      "publication": "CVPR'2026",
+      "split": "Full",
+      "view": "Pano.",
+      "ne": "5.4",
+      "osr": "58.7",
+      "sr": "47.9",
+      "spl": "32.8",
+      "group": "zero-shot"
+    },
+    {
+      "method": "MapGPT-CE-GPT4o",
+      "publication": "ACL'2024",
+      "split": "R2R-CE-100",
+      "view": "Pano.",
+      "ne": "8.2",
+      "osr": "21.0",
+      "sr": "7.0",
+      "spl": "5.0",
+      "group": "zero-shot"
+    },
+    {
+      "method": "DiscussNav-GPT4",
+      "publication": "ICRA'2024",
+      "split": "R2R-CE-100",
+      "view": "Pano.",
+      "ne": "7.8",
+      "osr": "15.0",
+      "sr": "11.0",
+      "spl": "10.5",
+      "group": "zero-shot"
+    },
+    {
+      "method": "Open-Nav-GPT4",
+      "publication": "ICRA'2025",
+      "split": "R2R-CE-100",
+      "view": "Pano.",
+      "ne": "6.7",
+      "osr": "23.0",
+      "sr": "19.0",
+      "spl": "16.1",
+      "group": "zero-shot"
+    },
+    {
+      "method": "Three-Step Nav-GPT-5",
+      "publication": "AISTATS'2026",
+      "split": "R2R-CE-100",
+      "view": "Pano.",
+      "ne": "5.9",
+      "osr": "39.0",
+      "sr": "34.0",
+      "spl": "29.1",
+      "group": "zero-shot"
+    },
+    {
+      "method": "STRIDER-GPT-4o",
+      "publication": "NeurIPS'2025",
+      "split": "R2R-CE-100",
+      "view": "Pano.",
+      "ne": "6.9",
+      "osr": "39.0",
+      "sr": "35.0",
+      "spl": "30.3",
+      "group": "zero-shot"
+    },
+    {
+      "method": "LaViRA-GPT-4o",
+      "publication": "ICRA'2026",
+      "split": "R2R-CE-100",
+      "view": "Pano.",
+      "ne": "6.4 \u00b1 0.28",
+      "osr": "43.3 \u00b1 3.2",
+      "sr": "36.0 \u00b1 1.7",
+      "spl": "28.3 \u00b1 0.8",
+      "group": "zero-shot"
+    },
+    {
+      "method": "LaViRA-Gemini-2.5-pro",
+      "publication": "ICRA'2026",
+      "split": "R2R-CE-100",
+      "view": "Pano.",
+      "ne": "6.5 \u00b1 0.27",
+      "osr": "48.7 \u00b1 2.1",
+      "sr": "38.3 \u00b1 0.6",
+      "spl": "28.3 \u00b1 0.9",
+      "group": "zero-shot"
+    },
+    {
+      "method": "O2C-Nav-Gemini-2.5-Pro",
+      "publication": "arXiv'2026",
+      "split": "R2R-CE-100",
+      "view": "Pano.",
+      "ne": "5.8",
+      "osr": "65.0",
+      "sr": "49.3",
+      "spl": "30.9",
+      "group": "zero-shot"
+    },
+    {
+      "method": "EvoNav-GPT-4o",
+      "publication": "CVPR'2026",
+      "split": "R2R-CE-100",
+      "view": "Pano.",
+      "ne": "6.0",
+      "osr": "35.0",
+      "sr": "30.0",
+      "spl": "24.9",
+      "group": "zero-shot"
+    },
+    {
+      "method": "EvoNav-Gemini-2.5-pro",
+      "publication": "CVPR'2026",
+      "split": "R2R-CE-100",
+      "view": "Pano.",
+      "ne": "5.0",
+      "osr": "51.0",
+      "sr": "43.0",
+      "spl": "37.8",
+      "group": "zero-shot"
+    },
+    {
+      "method": "SmartWay-GPT-4o",
+      "publication": "IROS'2025",
+      "split": "R2R-CE-100",
+      "view": "Pano.",
+      "ne": "7.0",
+      "osr": "51.0",
+      "sr": "29.0",
+      "spl": "22.5",
+      "group": "zero-shot"
+    },
+    {
+      "method": "SmartWay-GPT-5.5",
+      "publication": "IROS'2025",
+      "split": "R2R-CE-100",
+      "view": "Pano.",
+      "ne": "5.2",
+      "osr": "60.0",
+      "sr": "44.0",
+      "spl": "35.0",
+      "group": "zero-shot"
+    },
+    {
+      "method": "AgenticNav-Gemini-2.5-pro",
+      "publication": "arXiv'2026",
+      "split": "R2R-CE-100",
+      "view": "Pano.",
+      "ne": "5.9",
+      "osr": "63.0",
+      "sr": "49.0",
+      "spl": "33.2",
+      "group": "zero-shot"
+    },
+    {
+      "method": "AgenticNav-GPT-5.5",
+      "publication": "arXiv'2026",
+      "split": "R2R-CE-100",
+      "view": "Pano.",
+      "ne": "5.2",
+      "osr": "65.0",
+      "sr": "55.0",
+      "spl": "48.4",
+      "group": "zero-shot"
+    },
+    {
+      "method": "SpatialNav",
+      "publication": "arXiv'2026",
+      "split": "Author-sampled",
+      "view": "Pano.",
+      "ne": "5.2",
+      "osr": "66.0",
+      "sr": "64.0",
+      "spl": "51.1",
+      "group": "zero-shot"
+    },
+    {
+      "method": "SpatialAnt",
+      "publication": "arXiv'2026",
+      "split": "Author-sampled",
+      "view": "Pano.",
+      "ne": "4.4",
+      "osr": "76.0",
+      "sr": "66.0",
+      "spl": "54.4",
+      "group": "zero-shot"
+    },
+    {
+      "method": "HarnessVLN-GPT-5.5",
+      "publication": "arXiv'2026",
+      "split": "\u2014",
+      "view": "Pano.",
+      "ne": "4.0",
+      "osr": "72.7",
+      "sr": "60.8",
+      "spl": "43.5",
+      "group": "zero-shot"
+    },
+    {
+      "method": "Fast-SmartWay-GPT-4o",
+      "publication": "arXiv'2025",
+      "split": "R2R-CE-100",
+      "view": "F3+P",
+      "ne": "7.7 \u00b1 0.42",
+      "osr": "\u2014",
+      "sr": "27.8 \u00b1 2.22",
+      "spl": "25.0 \u00b1 2.70",
+      "group": "zero-shot"
+    },
+    {
+      "method": "CA-Nav",
+      "publication": "TPAMI'2025",
+      "split": "Full",
+      "view": "Mono.",
+      "ne": "7.6",
+      "osr": "48.0",
+      "sr": "25.3",
+      "spl": "10.8",
+      "group": "zero-shot"
+    },
+    {
+      "method": "AO-Planner",
+      "publication": "AAAI'2025",
+      "split": "Full",
+      "view": "Mono.",
+      "ne": "7.0",
+      "osr": "38.3",
+      "sr": "25.5",
+      "spl": "16.6",
+      "group": "zero-shot"
+    },
+    {
+      "method": "DreamNav",
+      "publication": "arXiv'2025",
+      "split": "\u2014",
+      "view": "Mono.",
+      "ne": "7.1",
+      "osr": "41.0",
+      "sr": "32.8",
+      "spl": "29.0",
+      "group": "zero-shot"
+    },
+    {
+      "method": "GC-VLN",
+      "publication": "CoRL'2025",
+      "split": "Full",
+      "view": "Mono.",
+      "ne": "7.3",
+      "osr": "41.8",
+      "sr": "33.6",
+      "spl": "16.3",
+      "group": "zero-shot"
+    },
+    {
+      "method": "GPT-6-Astra (medium reasoning)",
+      "publication": "Report'2026",
+      "split": "R2R-CE-100",
+      "view": "Mono.",
+      "ne": "3.0 \u00b1 0.4",
+      "osr": "80.7 \u00b1 2.1",
+      "sr": "75.7 \u00b1 1.5",
+      "spl": "65.6 \u00b1 2.1",
+      "group": "astra"
+    },
+    {
+      "method": "GPT-6-Astra (ultra reasoning)",
+      "publication": "Report'2026",
+      "split": "R2R-CE-100",
+      "view": "Mono.",
+      "ne": "2.9 \u00b1 0.2",
+      "osr": "83.7 \u00b1 1.5",
+      "sr": "81.3 \u00b1 2.5",
+      "spl": "71.5 \u00b1 1.7",
+      "group": "astra"
+    }
+  ]
+}
